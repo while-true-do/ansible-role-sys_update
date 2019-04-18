@@ -1,0 +1,13 @@
+---
+# defaults file for while_true_do.sys_update
+
+# Dependencies to check for reboots (defined in vars/*.yml)
+wtd_sys_update_dep_packages: ""
+wtd_sys_update_dep_packages_state: "present"
+
+# Reboot automatically, when needed
+wtd_sys_update_reboot_enabled: True
+# Force reboot after every update
+wtd_sys_update_reboot_forced: False
+wtd_sys_update_reboot_msg: "System is going down to apply updates."
+wtd_sys_update_reboot_timeout: "3600"

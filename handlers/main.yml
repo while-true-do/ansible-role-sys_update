@@ -1,0 +1,12 @@
+---
+# handlers file for while_true_do.sys_update
+
+- name: Reboot System
+  reboot:
+    msg: "{{ wtd_sys_update_reboot_msg }}"
+    reboot_timeout: "{{ wtd_sys_update_reboot_timeout }}"
+  become: yes
+  when: ansible_virtualization_type != "docker"
+  tags:
+    - update
+    - reboot

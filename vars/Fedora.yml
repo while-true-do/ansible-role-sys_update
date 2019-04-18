@@ -1,0 +1,4 @@
+---
+# vars file for while_true_do.sys_update
+
+wtd_sys_update_dep_packages: "tracer"

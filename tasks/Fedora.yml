@@ -1,0 +1,36 @@
+---
+# tasks file for while_true_do.sys_update
+
+- name: Manage Dependencies
+  package:
+    name: "{{ wtd_sys_update_dep_packages }}"
+    state: "{{ wtd_sys_update_dep_packages_state }}"
+  become: True
+  tags:
+    - update
+    - package
+
+- name: Update System Packages
+  dnf:
+    name: "*"
+    state: latest
+    update_cache: True
+  become: True
+  tags:
+    - update
+    - package
+
+- name: Check System Reboot
+  command: tracer
+  ignore_errors: True
+  register: wtd_sys_update_reboot_check
+  changed_when: wtd_sys_update_reboot_check.stdout.find('reboot') != -1 or
+                wtd_sys_update_reboot_forced
+  failed_when: wtd_sys_update_reboot_check.stdout.find('unsupported') != -1
+  become: True
+  when: wtd_sys_update_reboot_enabled or
+        wtd_sys_update_reboot_forced
+  notify: Reboot System
+  tags:
+    - update
+    - reboot

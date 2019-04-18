@@ -1,0 +1,8 @@
+---
+# tasks file for while_true_do.sys_update
+
+- name: Include distribution Vars
+  include_vars: "{{ ansible_distribution }}.yml"
+
+- name: Include distribution Tasks
+  include_tasks: "{{ ansible_distribution }}.yml"
