@@ -1,7 +1,7 @@
 ---
 # tasks file for while_true_do.sys_update
 
-- name: Manage Dependencies
+- name: Manage Dependency Packages
   package:
     name: "{{ wtd_sys_update_dep_packages }}"
     state: "{{ wtd_sys_update_dep_packages_state }}"
