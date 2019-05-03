@@ -6,8 +6,15 @@ wtd_sys_update_dep_packages: ""
 wtd_sys_update_dep_packages_state: "present"
 
 # Reboot automatically, when needed
-wtd_sys_update_reboot_enabled: True
+wtd_sys_update_reboot_enabled: true
 # Force reboot after every update
-wtd_sys_update_reboot_forced: False
+wtd_sys_update_reboot_forced: false
 wtd_sys_update_reboot_msg: "System is going down to apply updates."
 wtd_sys_update_reboot_timeout: "3600"
+
+# Don't install additional dependencies
+wtd_sys_update_update_only: false
+
+# RedHat only
+# Only Install security updates
+wtd_sys_update_security_only: false

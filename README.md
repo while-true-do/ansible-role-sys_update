@@ -66,14 +66,30 @@ wtd_sys_update_dep_packages: ""
 wtd_sys_update_dep_packages_state: "present"
 
 # Reboot automatically, when needed
-wtd_sys_update_reboot_enabled: True
+wtd_sys_update_reboot_enabled: true
 # Force reboot after every update
-wtd_sys_update_reboot_forced: False
+wtd_sys_update_reboot_forced: false
 wtd_sys_update_reboot_msg: "System is going down to apply updates."
 wtd_sys_update_reboot_timeout: "3600"
+
+# Don't install additional dependencies
+wtd_sys_update_update_only: false
+
+# RedHat only
+# Only Install security updates
+wtd_sys_update_security_only: false
 ```
 
 vars/CentOS.yml
+```
+---
+# vars file for while_true_do.sys_update
+
+wtd_sys_update_dep_packages: "yum-utils"
+
+```
+
+vars/RedHat.yml
 ```
 ---
 # vars file for while_true_do.sys_update
@@ -117,6 +133,11 @@ can be done in a
       wtd_sys_update_reboot_timeout: "600"
 
 ```
+
+## Known Issues
+
+Testing RedHat is currently only possible with a valid subscription.
+For now, RedHat Testing is faked via CentOS.
 
 ## Testing
 

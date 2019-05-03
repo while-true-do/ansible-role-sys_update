@@ -5,32 +5,43 @@
   package:
     name: "{{ wtd_sys_update_dep_packages }}"
     state: "{{ wtd_sys_update_dep_packages_state }}"
-  become: True
+  become: true
   tags:
-    - update
     - package
+    - security
+    - system
+    - update
+    - upgrade
 
 - name: Update System Packages
   dnf:
     name: "*"
     state: latest
-    update_cache: True
-  become: True
+    update_cache: true
+    update_only: "{{ wtd_sys_update_update_only }}"
+  become: true
   tags:
-    - update
     - package
+    - security
+    - system
+    - update
+    - upgrade
 
 - name: Check System Reboot
   command: tracer
-  ignore_errors: True
+  ignore_errors: true
   register: wtd_sys_update_reboot_check
   changed_when: wtd_sys_update_reboot_check.stdout.find('reboot') != -1 or
                 wtd_sys_update_reboot_forced
   failed_when: wtd_sys_update_reboot_check.stdout.find('unsupported') != -1
-  become: True
+  become: true
   when: wtd_sys_update_reboot_enabled or
         wtd_sys_update_reboot_forced
   notify: Reboot System
   tags:
-    - update
+    - package
     - reboot
+    - security
+    - system
+    - update
+    - upgrade

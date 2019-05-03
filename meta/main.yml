@@ -25,5 +25,7 @@ galaxy_info:
     - update
     - package
     - reboot
+    - security
+    - system
 
 dependencies: []

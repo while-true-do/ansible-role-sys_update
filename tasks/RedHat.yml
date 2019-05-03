@@ -18,6 +18,7 @@
     name: "*"
     state: latest
     update_cache: true
+    security: "{{ wtd_sys_update_security_only }}"
     update_only: "{{ wtd_sys_update_update_only }}"
   become: true
   tags:

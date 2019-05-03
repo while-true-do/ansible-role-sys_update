@@ -45,11 +45,24 @@ platforms:
     environment:
       container: docker
 
+  - name: redhat7
+    image: centos:7
+    command: /sbin/init
+    volume_mounts:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tmpfs:
+      - /run
+      - /tmp
+    environment:
+      container: docker
+
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 verifier:
   name: testinfra
+  options:
+    v: 1
   lint:
     name: flake8
