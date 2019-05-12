@@ -3,6 +3,14 @@
 
 - name: Include distribution Vars
   include_vars: "{{ ansible_distribution }}.yml"
+  tags:
+    - package
+    - update
+    - system
 
 - name: Include distribution Tasks
   include_tasks: "{{ ansible_distribution }}.yml"
+  tags:
+    - package
+    - update
+    - system
