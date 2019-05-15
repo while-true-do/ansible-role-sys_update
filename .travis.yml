@@ -20,6 +20,22 @@ before_script:
   - ln -s  $PWD ../while_true_do.sys_update
   - cd ../while_true_do.sys_update
 
+env:
+  matrix:
+    # Please also maintain
+    # - meta/main.yml
+    # - molecule/defaults/tests/*
+    - name: "centos7"
+      image: "centos:7"
+    - name: "redhat7"
+      image: "centos:7"
+    - name: "fedora29"
+      image: "fedora:29"
+      pygroup: "python3"
+    - name: "fedora30"
+      image: "fedora:30"
+      pygroup: "python3"
+
 script:
   # Do the tests.
   - molecule test
