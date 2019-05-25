@@ -61,16 +61,17 @@ defaults/main.yml
 ---
 # defaults file for while_true_do.sys_update
 
-# Dependencies to check for reboots (defined in vars/*.yml)
+## Package Management
 wtd_sys_update_dep_packages: ""
 wtd_sys_update_dep_packages_state: "present"
 
+## Host Management
 # Reboot automatically, when needed
 wtd_sys_update_reboot_enabled: true
 # Force reboot after every update
-wtd_sys_update_reboot_forced: false
 wtd_sys_update_reboot_msg: "System is going down to apply updates."
 wtd_sys_update_reboot_timeout: "3600"
+wtd_sys_update_reboot_forced: false
 
 # Don't install additional dependencies
 wtd_sys_update_update_only: false

@@ -9,10 +9,15 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 def test_dep_pkg(host):
     if host.system_info.distribution == "CentOS":
         pkg = host.package('yum-utils')
+
         assert pkg.is_installed
+
     if host.system_info.distribution == "RedHat":
         pkg = host.package('yum-utils')
+
         assert pkg.is_installed
+
     if host.system_info.distribution == "Fedora":
         pkg = host.package('tracer')
+
         assert pkg.is_installed

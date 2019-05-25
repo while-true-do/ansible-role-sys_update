@@ -12,6 +12,7 @@ galaxy_info:
   # Please also maintain
   # - molecule/default/molecule.yml
   # - molecule/default/tests/test_default.py
+  # - .travis.yml
   platforms:
     - name: EL
       versions:
